@@ -12,35 +12,19 @@ type Row = {
   name: string;
 };
 
-const Material = (props: Props) => {
+const Customer = (props: Props) => {
   const [columns, setColumns] = useState([
     SelectColumn,
     {
-      name: "料号",
-      key: "part_number",
-      editor: TextEditor,
-    },
-    {
+      name: "客户姓名",
       key: "name",
-      name: "名称",
       editor: TextEditor,
     },
     {
-      name: "规格",
-      key: "spec",
+      name: "客户电话",
+      key: "phone",
       editor: TextEditor,
     },
-    {
-      name: "储位",
-      key: "location",
-      editor: TextEditor,
-    },
-    {
-      name: "数量",
-      key: "quantity",
-      editor: TextEditor,
-    },
-
     {
       name: "备注",
       key: "remark",
@@ -67,7 +51,7 @@ const Material = (props: Props) => {
   // 获取列表数据
   const handleGetRows = async () => {
     const { data } = await supabase
-      .from("materials")
+      .from("customers")
       .select("*")
       .order("inserted_at", { ascending: false });
     if (data) {
@@ -87,7 +71,7 @@ const Material = (props: Props) => {
       id: row.id,
       data: omit(row, ["id", "inserted_at", "updated_at", "data"]),
     };
-    const { error } = await supabase.from("materials").upsert(data);
+    const { error } = await supabase.from("customers").upsert(data);
 
     if (!error) {
       handleGetRows();
@@ -100,7 +84,7 @@ const Material = (props: Props) => {
     if (!isConfirm) return;
 
     const ids = Array.from(selectedRows);
-    const { error } = await supabase.from("materials").delete().in("id", ids);
+    const { error } = await supabase.from("customers").delete().in("id", ids);
     if (!error) {
       await handleGetRows();
       setSelectedRows(new Set());
@@ -152,4 +136,4 @@ const Material = (props: Props) => {
   );
 };
 
-export default Material;
+export default Customer;

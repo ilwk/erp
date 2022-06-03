@@ -41,6 +41,7 @@ const Order = (props: Props) => {
 
   const [rows, setRows] = useState<Row[]>([]);
   const filterRows = useMemo(() => {
+    if (!search) return rows;
     return rows.filter((item) => {
       const row = omit(item, ["id"]);
       return Object.values(row).some((value) => {

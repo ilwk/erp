@@ -16,6 +16,11 @@ const menus = [
     path: "/order",
     icon: "icon-park-outline:transaction-order",
   },
+  {
+    title: "客户管理",
+    path: "/customer",
+    icon: "bi:people-fill",
+  },
 ];
 
 const AppShell = (props: Props) => {
