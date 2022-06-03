@@ -26,11 +26,6 @@ const Inventory = (props: Props) => {
       editor: TextEditor,
     },
     {
-      key: "model",
-      name: "型号",
-      editor: TextEditor,
-    },
-    {
       name: "规格",
       key: "spec",
       editor: TextEditor,
@@ -38,6 +33,17 @@ const Inventory = (props: Props) => {
     {
       name: "储位",
       key: "location",
+      editor: TextEditor,
+    },
+    {
+      name: "数量",
+      key: "quantity",
+      editor: TextEditor,
+    },
+
+    {
+      name: "备注",
+      key: "remark",
       editor: TextEditor,
     },
   ]);
