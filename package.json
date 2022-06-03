@@ -11,9 +11,11 @@
   "dependencies": {
     "@supabase/supabase-auth-helpers": "^1.4.2",
     "@supabase/supabase-js": "^1.35.3",
+    "@types/nprogress": "^0.2.0",
     "axios": "^0.27.2",
     "lodash": "^4.17.21",
     "next": "12.1.6",
+    "nprogress": "^0.2.0",
     "react": "18.1.0",
     "react-data-grid": "7.0.0-beta.13",
     "react-dom": "18.1.0",

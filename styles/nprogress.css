@@ -1,0 +1,31 @@
+/* Make clicks pass-through */
+#nprogress {
+  @apply pointer-events-none;
+}
+
+#nprogress .bar {
+  @apply bg-primary fixed z-50 top-0 left-0 w-full h-[2px];
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  @apply block absolute right-0 w-[100px] h-full shadow shadow-primary opacity-100 rotate-[3deg] translate-x-0 translate-y-[-4px];
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  @apply block fixed z-50 top-[15px] right-[15px];
+}
+
+#nprogress .spinner-icon {
+  @apply block w-[18px] h-[18px] border-2 border-transparent border-t-primary border-l-primary rounded-full animate-spin;
+}
+
+.nprogress-custom-parent {
+  @apply overflow-hidden relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  @apply absolute;
+}
