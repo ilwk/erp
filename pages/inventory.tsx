@@ -1,5 +1,5 @@
 import AppShell from "~/components/AppShell";
-import DataGrid, { TextEditor } from "react-data-grid";
+import DataGrid, { SelectColumn, TextEditor } from "react-data-grid";
 import { useEffect, useState } from "react";
 import { supabase } from "~/utils/supabaseClient";
 import { debounce, omit } from "lodash";
@@ -14,6 +14,7 @@ type Row = {
 
 const Inventory = (props: Props) => {
   const [columns, setColumns] = useState([
+    SelectColumn,
     {
       key: "id",
       name: "id",
@@ -46,6 +47,9 @@ const Inventory = (props: Props) => {
   ]);
 
   const [rows, setRows] = useState<Row[]>([]);
+  const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(
+    () => new Set()
+  );
 
   // 获取列表数据
   const handleGetRows = async () => {
@@ -56,8 +60,10 @@ const Inventory = (props: Props) => {
     if (data) {
       setRows(data.map((item) => ({ id: item.id, ...item.data })));
     }
+    return data;
   };
 
+  // 刚进入页面时获取列表数据
   useEffect(() => {
     handleGetRows();
   }, []);
@@ -75,14 +81,34 @@ const Inventory = (props: Props) => {
     }
   };
 
+  // 删除数据
+  const handleDeleteRows = async () => {
+    const ids = Array.from(selectedRows);
+    const { error } = await supabase
+      .from("material_info")
+      .delete()
+      .in("id", ids);
+    if (!error) {
+      await handleGetRows();
+      setSelectedRows(new Set());
+    }
+  };
+
   return (
     <AppShell className="flex flex-col gap-4 h-screen">
-      <div>
+      <div className="flex gap-4">
         <button
           className="btn btn-primary btn-sm"
           onClick={() => handleSaveRow()}
         >
           新建
+        </button>
+        <button
+          className="btn btn-error btn-sm"
+          onClick={() => handleDeleteRows()}
+          disabled={!selectedRows.size}
+        >
+          删除
         </button>
       </div>
       <DataGrid
@@ -95,6 +121,8 @@ const Inventory = (props: Props) => {
           const row = rows[data.indexes[0]];
           handleSaveRow(row);
         }}
+        selectedRows={selectedRows}
+        onSelectedRowsChange={setSelectedRows}
       ></DataGrid>
     </AppShell>
   );
