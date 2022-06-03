@@ -26,9 +26,8 @@ const Order = (props: Props) => {
       editor: TextEditor,
     },
     {
-      name: "数量",
-      key: "quantity",
-      editor: TextEditor,
+      name: "客户",
+      key: "customer",
     },
     {
       name: "备注",
