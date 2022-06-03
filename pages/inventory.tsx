@@ -52,7 +52,7 @@ const Inventory = (props: Props) => {
     const { data } = await supabase
       .from("material_info")
       .select("*")
-      .order("id", { ascending: false });
+      .order("inserted_at", { ascending: false });
     if (data) {
       setRows(data.map((item) => ({ id: item.id, ...item.data })));
     }
@@ -76,7 +76,7 @@ const Inventory = (props: Props) => {
   };
 
   return (
-    <AppShell className="space-y-2">
+    <AppShell className="flex flex-col gap-4 h-screen">
       <div>
         <button
           className="btn btn-primary btn-sm"
@@ -86,6 +86,7 @@ const Inventory = (props: Props) => {
         </button>
       </div>
       <DataGrid
+        className="h-full"
         rowKeyGetter={(row) => row.id}
         rows={rows}
         columns={columns}
