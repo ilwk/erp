@@ -15,7 +15,7 @@ const Navbar = (props: Props) => {
   const isActive = (path: string) => route.route === path;
   return (
     <aside className="h-screen bg-base-200 fixed top-0 bottom-0 w-48">
-      <ul className="menu p-2 rounded-box">
+      <ul className="menu p-2 rounded-box space-y-2">
         {props.options.map((item, index) => {
           return (
             <li key={item.path}>
