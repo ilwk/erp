@@ -49,26 +49,31 @@ const Inventory = (props: Props) => {
 
   // 获取列表数据
   const handleGetRows = async () => {
-    const { data } = await supabase.from("material_info").select("*");
+    const { data } = await supabase
+      .from("material_info")
+      .select("*")
+      .order("id", { ascending: false });
     if (data) {
       setRows(data.map((item) => ({ id: item.id, ...item.data })));
     }
   };
+
   useEffect(() => {
     handleGetRows();
   }, []);
 
   // 编辑/添加数据
-  const handleSaveRow = debounce(async (row: Partial<Row> = {}) => {
+  const handleSaveRow = async (row: Partial<Row> = {}) => {
     const data = {
       id: row.id,
-      data: omit(row, ["id", "name", "inserted_at", "updated_at", "data"]),
+      data: omit(row, ["id", "inserted_at", "updated_at", "data"]),
     };
     const { error } = await supabase.from("material_info").upsert(data);
+
     if (!error) {
       handleGetRows();
     }
-  }, 300);
+  };
 
   return (
     <AppShell className="space-y-2">
@@ -84,9 +89,9 @@ const Inventory = (props: Props) => {
         rowKeyGetter={(row) => row.id}
         rows={rows}
         columns={columns}
-        onRowsChange={(rows) => {
-          const row = rows[0];
+        onRowsChange={(rows, data) => {
           setRows(rows);
+          const row = rows[data.indexes[0]];
           handleSaveRow(row);
         }}
       ></DataGrid>
