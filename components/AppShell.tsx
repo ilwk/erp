@@ -7,10 +7,6 @@ type Props = PropsWithChildren<{
 
 const menus = [
   {
-    title: "物料管理",
-    path: "/materials",
-  },
-  {
     title: "库存管理",
     path: "/inventory",
   },

@@ -10,7 +10,6 @@ type Props = {
 
 const Navbar = (props: Props) => {
   const route = useRouter();
-  console.log(route);
   const isActive = (path: string) => route.route === path;
   return (
     <nav className="h-screen bg-base-200 fixed top-0 bottom-0 w-48">

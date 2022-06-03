@@ -1,12 +1,10 @@
-import React from 'react'
-import AppShell from '~/components/AppShell'
+import React from "react";
+import AppShell from "~/components/AppShell";
 
-type Props = {}
+type Props = {};
 
 const Materials = (props: Props) => {
-  return (
-    <AppShell>Materials</AppShell>
-  )
-}
+  return <AppShell>Materials</AppShell>;
+};
 
-export default Materials
+export default Materials;

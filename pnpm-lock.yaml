@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@supabase/supabase-auth-helpers': ^1.4.2
   '@supabase/supabase-js': ^1.35.3
+  '@types/lodash': ^4.14.182
   '@types/node': 17.0.38
   '@types/react': 18.0.10
   '@types/react-dom': 18.0.5
@@ -11,9 +12,11 @@ specifiers:
   daisyui: ^2.15.2
   eslint: 8.16.0
   eslint-config-next: 12.1.6
+  lodash: ^4.17.21
   next: 12.1.6
   postcss: ^8.4.14
   react: 18.1.0
+  react-data-grid: 7.0.0-beta.13
   react-dom: 18.1.0
   react-hook-form: ^7.31.3
   tailwindcss: ^3.0.24
@@ -23,12 +26,15 @@ dependencies:
   '@supabase/supabase-auth-helpers': 1.4.2
   '@supabase/supabase-js': 1.35.3
   axios: 0.27.2
+  lodash: 4.17.21
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
+  react-data-grid: 7.0.0-beta.13_ef5jwxihqo6n7gxfmzogljlgcm
   react-dom: 18.1.0_react@18.1.0
   react-hook-form: 7.31.3_react@18.1.0
 
 devDependencies:
+  '@types/lodash': 4.14.182
   '@types/node': 17.0.38
   '@types/react': 18.0.10
   '@types/react-dom': 18.0.5
@@ -286,6 +292,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/node/17.0.38:
@@ -621,6 +631,11 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -1633,6 +1648,10 @@ packages:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
 
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
+
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -2008,6 +2027,17 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
     dev: true
+
+  /react-data-grid/7.0.0-beta.13_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-vhBdkC2KqAawmmzYTcNlfhfjcYFQsinNr5pPTUG6/3DzLfYWo1S6nl48wgPWgyD9uDclV3H5NWvKSSwQTTsYMQ==}
+    peerDependencies:
+      react: ^16.14 || ^17.0 || ^18.0
+      react-dom: ^16.14 || ^17.0 || ^18.0
+    dependencies:
+      clsx: 1.1.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
 
   /react-dom/18.1.0_react@18.1.0:
     resolution: {integrity: sha512-fU1Txz7Budmvamp7bshe4Zi32d0ll7ect+ccxNu9FlObT605GOEB8BfO4tmRJ39R5Zj831VCpvQ05QPBW5yb+w==}

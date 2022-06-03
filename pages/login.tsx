@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { supabase } from "~/utils/supabaseClient";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -8,14 +9,25 @@ const Login = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
   const router = useRouter();
+
   const onSubmit = async (data: any) => {
-    setLoading(true);
-    router.push("/");
+    try {
+      setLoading(true);
+      const { error } = await supabase.auth.signIn(data);
+      if (error) {
+        console.log(error);
+        throw error;
+      }
+      router.push("/");
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -25,16 +37,11 @@ const Login = () => {
           <input
             type="email"
             placeholder="Email"
-            className="input bg-base-200"
-            {...register("email")}
-          />
-        </div>
-        <div className="form-control">
-          <input
-            type="password"
-            placeholder="Password"
-            className="input bg-base-200"
-            {...register("password")}
+            className="input input-bordered"
+            {...register("email", {
+              required: true,
+              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            })}
           />
         </div>
         <div className="form-control">
