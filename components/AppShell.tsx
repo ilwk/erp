@@ -9,6 +9,7 @@ const menus = [
   {
     title: "库存管理",
     path: "/inventory",
+    icon: "ic:baseline-inventory",
   },
 ];
 

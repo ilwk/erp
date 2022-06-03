@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Icon } from "@iconify/react";
 
 type Props = {
   options: Array<{
     title: string;
     path: string;
+    icon?: string;
   }>;
 };
 
@@ -19,6 +21,7 @@ const Navbar = (props: Props) => {
             <li key={item.path}>
               <Link href={item.path}>
                 <a className={`${isActive(item.path) ? "active" : ""}`}>
+                  {item.icon && <Icon icon={item.icon}></Icon>}
                   {item.title}
                 </a>
               </Link>
