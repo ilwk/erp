@@ -16,10 +16,6 @@ const Inventory = (props: Props) => {
   const [columns, setColumns] = useState([
     SelectColumn,
     {
-      key: "id",
-      name: "id",
-    },
-    {
       name: "料号",
       key: "part_number",
       editor: TextEditor,
@@ -83,6 +79,9 @@ const Inventory = (props: Props) => {
 
   // 删除数据
   const handleDeleteRows = async () => {
+    const isConfirm = confirm("确认删除？");
+    if (!isConfirm) return;
+
     const ids = Array.from(selectedRows);
     const { error } = await supabase
       .from("material_info")
@@ -96,15 +95,22 @@ const Inventory = (props: Props) => {
 
   return (
     <AppShell className="flex flex-col gap-4 h-screen">
+      <div>
+        <input
+          type="text"
+          className="input input-bordered input-sm"
+          placeholder="请输入搜索条件"
+        />
+      </div>
       <div className="flex gap-4">
         <button
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-xs"
           onClick={() => handleSaveRow()}
         >
           新建
         </button>
         <button
-          className="btn btn-error btn-sm"
+          className="btn btn-error btn-xs"
           onClick={() => handleDeleteRows()}
           disabled={!selectedRows.size}
         >
