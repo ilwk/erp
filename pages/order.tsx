@@ -2,7 +2,7 @@ import AppShell from "~/components/AppShell";
 import DataGrid, { SelectColumn, TextEditor } from "react-data-grid";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "~/utils/supabaseClient";
-import { debounce, omit } from "lodash";
+import { omit } from "lodash";
 
 type Props = {};
 
@@ -12,12 +12,12 @@ type Row = {
   name: string;
 };
 
-const Inventory = (props: Props) => {
+const Order = (props: Props) => {
   const [columns, setColumns] = useState([
     SelectColumn,
     {
-      name: "料号",
-      key: "part_number",
+      name: "订单号",
+      key: "order_no",
       editor: TextEditor,
     },
     {
@@ -26,21 +26,10 @@ const Inventory = (props: Props) => {
       editor: TextEditor,
     },
     {
-      name: "规格",
-      key: "spec",
-      editor: TextEditor,
-    },
-    {
-      name: "储位",
-      key: "location",
-      editor: TextEditor,
-    },
-    {
       name: "数量",
       key: "quantity",
       editor: TextEditor,
     },
-
     {
       name: "备注",
       key: "remark",
@@ -66,7 +55,7 @@ const Inventory = (props: Props) => {
   // 获取列表数据
   const handleGetRows = async () => {
     const { data } = await supabase
-      .from("material_info")
+      .from("orders")
       .select("*")
       .order("inserted_at", { ascending: false });
     if (data) {
@@ -86,7 +75,7 @@ const Inventory = (props: Props) => {
       id: row.id,
       data: omit(row, ["id", "inserted_at", "updated_at", "data"]),
     };
-    const { error } = await supabase.from("material_info").upsert(data);
+    const { error } = await supabase.from("orders").upsert(data);
 
     if (!error) {
       handleGetRows();
@@ -99,10 +88,7 @@ const Inventory = (props: Props) => {
     if (!isConfirm) return;
 
     const ids = Array.from(selectedRows);
-    const { error } = await supabase
-      .from("material_info")
-      .delete()
-      .in("id", ids);
+    const { error } = await supabase.from("orders").delete().in("id", ids);
     if (!error) {
       await handleGetRows();
       setSelectedRows(new Set());
@@ -154,4 +140,4 @@ const Inventory = (props: Props) => {
   );
 };
 
-export default Inventory;
+export default Order;

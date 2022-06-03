@@ -7,9 +7,14 @@ type Props = PropsWithChildren<{
 
 const menus = [
   {
-    title: "库存管理",
-    path: "/inventory",
-    icon: "ic:baseline-inventory",
+    title: "物料管理",
+    path: "/material",
+    icon: "ep:goods",
+  },
+  {
+    title: "订单管理",
+    path: "/order",
+    icon: "icon-park-outline:transaction-order",
   },
 ];
 

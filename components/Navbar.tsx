@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
   const route = useRouter();
   const isActive = (path: string) => route.route === path;
   return (
-    <nav className="h-screen bg-base-200 fixed top-0 bottom-0 w-48">
+    <aside className="h-screen bg-base-200 fixed top-0 bottom-0 w-48">
       <ul className="menu p-2 rounded-box">
         {props.options.map((item, index) => {
           return (
@@ -29,7 +29,7 @@ const Navbar = (props: Props) => {
           );
         })}
       </ul>
-    </nav>
+    </aside>
   );
 };
 
