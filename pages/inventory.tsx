@@ -1,6 +1,6 @@
 import AppShell from "~/components/AppShell";
 import DataGrid, { SelectColumn, TextEditor } from "react-data-grid";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "~/utils/supabaseClient";
 import { debounce, omit } from "lodash";
 
@@ -42,7 +42,17 @@ const Inventory = (props: Props) => {
     },
   ]);
 
+  const [search, setSearch] = useState("");
+
   const [rows, setRows] = useState<Row[]>([]);
+  const filterRows = useMemo(() => {
+    return rows.filter((item) => {
+      const row = omit(item, ["id"]);
+      return Object.values(row).some((value) => {
+        return value.toString().includes(search);
+      });
+    });
+  }, [rows, search]);
   const [selectedRows, setSelectedRows] = useState<ReadonlySet<number>>(
     () => new Set()
   );
@@ -100,6 +110,10 @@ const Inventory = (props: Props) => {
           type="text"
           className="input input-bordered input-sm"
           placeholder="请输入搜索条件"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
       </div>
       <div className="flex gap-4">
@@ -120,7 +134,7 @@ const Inventory = (props: Props) => {
       <DataGrid
         className="h-full"
         rowKeyGetter={(row) => row.id}
-        rows={rows}
+        rows={filterRows}
         columns={columns}
         onRowsChange={(rows, data) => {
           setRows(rows);
