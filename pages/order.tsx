@@ -124,6 +124,11 @@ const Order = (props: Props) => {
           删除
         </button>
       </div>
+      <div className="tabs tabs-boxed">
+        <a className="tab">所有订单</a>
+        <a className="tab tab-active">未完成</a>
+        <a className="tab">已完成</a>
+      </div>
       <DataGrid
         className="h-full"
         rowKeyGetter={(row) => row.id}
