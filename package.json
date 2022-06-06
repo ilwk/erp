@@ -12,8 +12,6 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.8.2",
-    "@nivo/bar": "^0.79.1",
-    "@nivo/core": "^0.79.0",
     "@supabase/supabase-js": "^1.35.3",
     "@visx/group": "^2.10.0",
     "@visx/mock-data": "^2.1.2",
