@@ -18,6 +18,7 @@ const Order = (props: Props) => {
     {
       name: "订单号",
       key: "order_no",
+      frozen: true,
       editor: TextEditor,
     },
     {
@@ -124,8 +125,8 @@ const Order = (props: Props) => {
         </button>
       </div>
       <div className="tabs tabs-boxed">
-        <a className="tab">所有订单</a>
-        <a className="tab tab-active">未完成</a>
+        <a className="tab tab-active">所有订单</a>
+        <a className="tab">未完成</a>
         <a className="tab">已完成</a>
       </div>
       <DataGrid
@@ -133,6 +134,9 @@ const Order = (props: Props) => {
         rowKeyGetter={(row) => row.id}
         rows={filterRows}
         columns={columns}
+        defaultColumnOptions={{
+          resizable: true,
+        }}
         onRowsChange={(rows, data) => {
           setRows(rows);
           const row = rows[data.indexes[0]];

@@ -145,6 +145,9 @@ const Material = (props: Props) => {
           const row = rows[data.indexes[0]];
           handleSaveRow(row);
         }}
+        defaultColumnOptions={{
+          resizable: true,
+        }}
         selectedRows={selectedRows}
         onSelectedRowsChange={setSelectedRows}
       ></DataGrid>

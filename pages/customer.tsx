@@ -129,6 +129,9 @@ const Customer = (props: Props) => {
         rowKeyGetter={(row) => row.id}
         rows={filterRows}
         columns={columns}
+        defaultColumnOptions={{
+          resizable: true,
+        }}
         onRowsChange={(rows, data) => {
           setRows(rows);
           const row = rows[data.indexes[0]];
