@@ -1,14 +1,20 @@
-import { Admin, ListGuesser, Resource } from "react-admin";
+import { Admin, defaultTheme, ListGuesser, Resource } from "react-admin";
 import { authProvider } from "./providers/authProvider";
 import { dataProvider } from "./providers/dataProvider";
 import { Dashboard } from "./dashboard/Dashboard";
 import contacts from "./contacts";
 import companies from "./companies";
 import deals from "./deals";
+import { ThemeOptions } from "@mui/material";
+
+const theme: ThemeOptions = {
+  ...defaultTheme,
+};
 
 const App = () => {
   return (
     <Admin
+      theme={theme}
       dashboard={Dashboard}
       dataProvider={dataProvider}
       authProvider={authProvider}
