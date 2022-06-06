@@ -13,4 +13,4 @@ jobs:
         with:
           SUPABASE_URL: ${{secrets.SUPABASE_URL }} # e.g. https://interestingproject.supabase.co
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          OUTPUT_PATH: types/supabase.ts
+          OUTPUT_PATH: src/types/supabase.ts
