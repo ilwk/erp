@@ -14,6 +14,8 @@ specifiers:
   faker: 5.4.0
   lodash: ^4.17.21
   prop-types: ^15.8.1
+  ra-core: ^4.1.2
+  ra-data-fakerest: ^4.1.2
   react: ^18.1.0
   react-admin: ^4.1.2
   react-dom: ^18.1.0
@@ -32,6 +34,8 @@ dependencies:
   faker: 5.4.0
   lodash: 4.17.21
   prop-types: 15.8.1
+  ra-core: 4.1.2_trhavp5copiczjzaskslnsdsdi
+  ra-data-fakerest: 4.1.2_ra-core@4.1.2
   react: 18.1.0
   react-admin: 4.1.2_oo3emjpi3bbjzqzdmt4yuasdq4
   react-dom: 18.1.0_react@18.1.0
@@ -771,6 +775,13 @@ packages:
       resolve: 1.22.0
     dev: false
 
+  /babel-runtime/6.26.0:
+    resolution: {integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: false
@@ -863,6 +874,12 @@ packages:
     resolution: {integrity: sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==}
     dependencies:
       safe-buffer: 5.1.2
+
+  /core-js/2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.4 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
+    dev: false
 
   /cosmiconfig/6.0.0:
     resolution: {integrity: sha512-xb3ZL6+L8b9JLLCx3ZdoZy4+2ECphCMo2PwqgP1tlfVq6M6YReyzBJtvWWtbDSpNr9hn96pkCiZqUcFEc+54Qg==}
@@ -1261,6 +1278,13 @@ packages:
 
   /faker/5.4.0:
     resolution: {integrity: sha512-Y9n/Ky/xZx/Bj8DePvXspUYRtHl/rGQytoIT5LaxmNwSe3wWyOeOXb3lT6Dpipq240PVpeFaGKzScz/5fvff2g==}
+    dev: false
+
+  /fakerest/3.3.0:
+    resolution: {integrity: sha512-D1y6a13dh34n738YMztecCX36JRKI5kxPaNVQukXUXvUyK7eANWyB5zczy0SMoMUDXC/ceKfjkgwbc1AYqYYOQ==}
+    dependencies:
+      babel-runtime: 6.26.0
+      lodash: 4.17.21
     dev: false
 
   /file-selector/0.5.0:
@@ -1754,6 +1778,43 @@ packages:
       - react-native
     dev: false
 
+  /ra-core/4.1.2_trhavp5copiczjzaskslnsdsdi:
+    resolution: {integrity: sha512-6lUpboSTk3e5v7K0pfCU/6WUwfaO7q3cwbhm1gBPNpBC+HZJWbZwEv1VEgHors6ewWXJ2GPXMjz9huwJgWjAiQ==}
+    peerDependencies:
+      history: ^5.1.0
+      react: ^16.9.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0
+      react-hook-form: ^7.31.0
+      react-router: ^6.1.0
+      react-router-dom: ^6.1.0
+    dependencies:
+      clsx: 1.1.1
+      date-fns: 2.28.0
+      eventemitter3: 4.0.7
+      inflection: 1.12.0
+      jsonexport: 3.2.0
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      query-string: 7.1.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+      react-is: 17.0.2
+      react-query: 3.39.1_ef5jwxihqo6n7gxfmzogljlgcm
+      react-router: 6.3.0_react@18.1.0
+      react-router-dom: 6.3.0_ef5jwxihqo6n7gxfmzogljlgcm
+    transitivePeerDependencies:
+      - react-native
+    dev: false
+
+  /ra-data-fakerest/4.1.2_ra-core@4.1.2:
+    resolution: {integrity: sha512-/81JCfzP7HWusdsNvWZ1KXsc5NWMkbcm3xxzw9gGAvhjktySY5tzFD4540XbL/8DMlpo7pNkllkog84vzi39WA==}
+    peerDependencies:
+      ra-core: ^4.0.0
+    dependencies:
+      fakerest: 3.3.0
+      ra-core: 4.1.2_trhavp5copiczjzaskslnsdsdi
+    dev: false
+
   /ra-i18n-polyglot/4.1.2_6b2n44jbjf7daczrqlsgoltwqe:
     resolution: {integrity: sha512-dkJFTxrYiH8FoNGnv732CIQBQHAg4NBs7f2KOHiOa14sW7kdzy4AnsyPzYo/g0e3Mu+97qsB9Ldxm/hiZlpBsg==}
     dependencies:
@@ -1955,6 +2016,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /regenerator-runtime/0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
     dev: false
 
   /regenerator-runtime/0.13.9:
