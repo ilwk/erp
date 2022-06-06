@@ -1,33 +1,31 @@
-import { Admin, defaultTheme, ListGuesser, Resource } from "react-admin";
-import { authProvider } from "./providers/authProvider";
-import { dataProvider } from "./providers/dataProvider";
-import { Dashboard } from "./dashboard/Dashboard";
-import contacts from "./contacts";
-import companies from "./companies";
-import deals from "./deals";
-import { ThemeOptions } from "@mui/material";
+import { Refine } from "@pankod/refine-core";
+import { Layout, ErrorComponent } from "@pankod/refine-antd";
+import { dataProvider } from "@pankod/refine-supabase";
+import routerProvider from "@pankod/refine-react-router-v6";
+import "@pankod/refine-antd/dist/styles.min.css";
+import { supabaseClient } from "./utility";
 
-const theme: ThemeOptions = {
-  ...defaultTheme,
-};
+import { PostList } from "./pages/posts/list";
+import authProvider from "./authProvider";
+import { Login } from "./pages/login";
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <Admin
-      theme={theme}
-      dashboard={Dashboard}
-      dataProvider={dataProvider}
+    <Refine
+      routerProvider={routerProvider}
+      dataProvider={dataProvider(supabaseClient)}
       authProvider={authProvider}
-    >
-      <Resource name="deals" {...deals} />
-      <Resource name="contacts" {...contacts} />
-      <Resource name="companies" {...companies} />
-      <Resource name="contactNotes" />
-      <Resource name="dealNotes" />
-      <Resource name="tasks" list={ListGuesser} />
-      <Resource name="sales" list={ListGuesser} />
-      <Resource name="tags" list={ListGuesser} />
-    </Admin>
+      Layout={Layout}
+      LoginPage={Login}
+      catchAll={<ErrorComponent />}
+      resources={[
+        {
+          name: "posts",
+          list: PostList,
+          canDelete: true,
+        },
+      ]}
+    />
   );
 };
 
