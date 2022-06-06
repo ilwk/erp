@@ -15,7 +15,7 @@ import { useTable } from "@pankod/refine-antd";
 
 import { IPost } from "../../types";
 
-export const ContactsList: React.FC<IResourceComponentsProps> = () => {
+const ContactsList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, filters } = useTable<IPost>({
     syncWithLocation: true,
   });
@@ -54,3 +54,5 @@ export const ContactsList: React.FC<IResourceComponentsProps> = () => {
     </List>
   );
 };
+
+export default ContactsList;

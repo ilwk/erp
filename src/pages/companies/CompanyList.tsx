@@ -17,9 +17,9 @@ import {
   TagField,
 } from "@pankod/refine-antd";
 
-import { useTable, useSelect } from "@pankod/refine-antd";
+import { useTable } from "@pankod/refine-antd";
 
-import { IPost, ICategory } from "../../types";
+import { IPost } from "../../types";
 
 const CompanyList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, filters } = useTable<IPost>({

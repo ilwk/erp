@@ -8,7 +8,7 @@ import {
   SaveButton,
 } from "@pankod/refine-antd";
 
-const CompanyCreate: React.FC = () => {
+const ContactCreate: React.FC = () => {
   const { formProps, saveButtonProps, onFinish, redirect } = useForm<IPost>({
     redirect: false,
   });
@@ -40,18 +40,33 @@ const CompanyCreate: React.FC = () => {
       }
     >
       <Form {...formProps} layout="vertical">
-        <Form.Item label="公司名称" name="name">
+        <Form.Item label="Title" name="title">
           <Input />
         </Form.Item>
-        <Form.Item label="公司名称" name="name">
-          <Input />
+        <Form.Item label="Status" name="status">
+          <Select
+            options={[
+              {
+                label: "Published",
+                value: "published",
+              },
+              {
+                label: "Draft",
+                value: "draft",
+              },
+              {
+                label: "Rejected",
+                value: "rejected",
+              },
+            ]}
+          />
         </Form.Item>
       </Form>
     </Edit>
   );
 };
 
-export default CompanyCreate;
+export default ContactCreate;
 
 interface IPost {
   id: string;

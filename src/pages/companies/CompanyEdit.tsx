@@ -1,31 +1,17 @@
-import { Edit, Form, Input, useForm, Select } from "@pankod/refine-antd";
+import { Edit, Form, Input, useForm } from "@pankod/refine-antd";
+import { definitions } from "../../types/supabase";
 
 const CompanyEdit: React.FC = () => {
-  const { formProps, saveButtonProps } = useForm<IPost>();
+  const { formProps, saveButtonProps } = useForm<definitions["companies"]>();
 
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
-        <Form.Item label="Title" name="title">
+        <Form.Item label="企业名称" name="name">
           <Input />
         </Form.Item>
-        <Form.Item label="Status" name="status">
-          <Select
-            options={[
-              {
-                label: "Published",
-                value: "published",
-              },
-              {
-                label: "Draft",
-                value: "draft",
-              },
-              {
-                label: "Rejected",
-                value: "rejected",
-              },
-            ]}
-          />
+        <Form.Item label="企业规模" name="size">
+          <Input />
         </Form.Item>
       </Form>
     </Edit>
@@ -33,9 +19,3 @@ const CompanyEdit: React.FC = () => {
 };
 
 export default CompanyEdit;
-
-interface IPost {
-  id: string;
-  title: string;
-  status: "published" | "draft" | "rejected";
-}
