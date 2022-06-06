@@ -21,6 +21,11 @@ const Customer = (props: Props) => {
       editor: TextEditor,
     },
     {
+      name: "客户地址",
+      key: "address",
+      editor: TextEditor,
+    },
+    {
       name: "客户电话",
       key: "phone",
       editor: TextEditor,
