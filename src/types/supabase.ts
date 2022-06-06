@@ -117,6 +117,105 @@ export interface paths {
       };
     };
   };
+  "/contacts": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["contacts"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** contacts */
+          contacts?: definitions["contacts"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
+        };
+        body: {
+          /** contacts */
+          contacts?: definitions["contacts"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/customers": {
     get: {
       parameters: {
@@ -546,6 +645,30 @@ export interface definitions {
     /** Format: text */
     website?: string;
   };
+  /** @description 联系人管理 */
+  contacts: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name?: string;
+    /** Format: text */
+    phone?: string;
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Foreign Key to `companies.id`.<fk table='companies' column='id'/>
+     */
+    company_id?: number;
+  };
   customers: {
     /**
      * Format: timestamp with time zone
@@ -687,6 +810,18 @@ export interface parameters {
   "rowFilter.companies.logo": string;
   /** Format: text */
   "rowFilter.companies.website": string;
+  /** @description contacts */
+  "body.contacts": definitions["contacts"];
+  /** Format: bigint */
+  "rowFilter.contacts.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.contacts.created_at": string;
+  /** Format: text */
+  "rowFilter.contacts.name": string;
+  /** Format: text */
+  "rowFilter.contacts.phone": string;
+  /** Format: bigint */
+  "rowFilter.contacts.company_id": string;
   /** @description customers */
   "body.customers": definitions["customers"];
   /** Format: timestamp with time zone */
