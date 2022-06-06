@@ -21,6 +21,8 @@ export interface paths {
           data?: parameters["rowFilter.customers.data"];
           name?: parameters["rowFilter.customers.name"];
           id?: parameters["rowFilter.customers.id"];
+          /** 公司地址 */
+          address?: parameters["rowFilter.customers.address"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -76,6 +78,8 @@ export interface paths {
           data?: parameters["rowFilter.customers.data"];
           name?: parameters["rowFilter.customers.name"];
           id?: parameters["rowFilter.customers.id"];
+          /** 公司地址 */
+          address?: parameters["rowFilter.customers.address"];
         };
         header: {
           /** Preference */
@@ -95,6 +99,8 @@ export interface paths {
           data?: parameters["rowFilter.customers.data"];
           name?: parameters["rowFilter.customers.name"];
           id?: parameters["rowFilter.customers.id"];
+          /** 公司地址 */
+          address?: parameters["rowFilter.customers.address"];
         };
         body: {
           /** customers */
@@ -433,6 +439,11 @@ export interface definitions {
      * @default extensions.uuid_generate_v4()
      */
     id: string;
+    /**
+     * Format: text
+     * @description 公司地址
+     */
+    address?: string;
   };
   materials: {
     /**
@@ -543,6 +554,11 @@ export interface parameters {
   "rowFilter.customers.name": string;
   /** Format: uuid */
   "rowFilter.customers.id": string;
+  /**
+   * Format: text
+   * @description 公司地址
+   */
+  "rowFilter.customers.address": string;
   /** @description materials */
   "body.materials": definitions["materials"];
   /** Format: timestamp with time zone */
