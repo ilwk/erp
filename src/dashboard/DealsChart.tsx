@@ -5,7 +5,6 @@ import { Box, Link } from "@mui/material";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useGetList } from "react-admin";
 import { startOfMonth, format } from "date-fns";
-import { ResponsiveBar } from "@nivo/bar";
 
 import { Deal } from "../types";
 
@@ -94,65 +93,7 @@ export const DealsChart = () => {
           Upcoming Deal Revenue
         </Link>
       </Box>
-      <Box height={500}>
-        <ResponsiveBar
-          data={months}
-          indexBy="date"
-          keys={["won", "pending", "lost"]}
-          colors={["#61cdbb", "#97e3d5", "#e25c3b"]}
-          margin={{ top: 50, right: 50, bottom: 50, left: 0 }}
-          padding={0.3}
-          valueScale={{
-            type: "linear",
-            min: range.min * 1.2,
-            max: range.max * 1.2,
-          }}
-          indexScale={{ type: "band", round: true }}
-          enableGridX={true}
-          enableGridY={false}
-          enableLabel={false}
-          axisTop={{
-            tickSize: 0,
-            tickPadding: 12,
-          }}
-          axisBottom={{
-            legendPosition: "middle",
-            legendOffset: 50,
-            tickSize: 0,
-            tickPadding: 12,
-          }}
-          axisLeft={null}
-          axisRight={{
-            format: (v: any) => `${Math.abs(v / 1000)}k`,
-            tickValues: 8,
-          }}
-          markers={
-            [
-              {
-                axis: "y",
-                value: 0,
-                lineStyle: { strokeOpacity: 0 },
-                textStyle: { fill: "#2ebca6" },
-                legend: "Won",
-                legendPosition: "top-left",
-                legendOrientation: "vertical",
-              },
-              {
-                axis: "y",
-                value: 0,
-                lineStyle: {
-                  stroke: "#f47560",
-                  strokeWidth: 1,
-                },
-                textStyle: { fill: "#e25c3b" },
-                legend: "Lost",
-                legendPosition: "bottom-left",
-                legendOrientation: "vertical",
-              },
-            ] as any
-          }
-        />
-      </Box>
+      <Box height={500}></Box>
     </>
   );
 };
