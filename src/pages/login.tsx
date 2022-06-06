@@ -1,47 +1,62 @@
+import React from "react";
 import { useLogin, useNavigation } from "@pankod/refine-core";
-import { useForm } from "@pankod/refine-react-hook-form";
+
+import { Card, Typography, Form, Input, Button } from "@pankod/refine-antd";
+
+const { Title } = Typography;
+
 export interface ILoginForm {
   email: string;
-  password: string;
 }
 
-export const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    refineCore: { formLoading },
-  } = useForm<ILoginForm>();
+export const Login: React.FC = () => {
+  const [form] = Form.useForm<ILoginForm>();
 
-  const { mutate: login } = useLogin<ILoginForm>();
+  const { mutate: login, isLoading } = useLogin<ILoginForm>();
 
-  const onSubmit = (values: any) => {
-    login(values);
-  };
+  const CardTitle = (
+    <Title level={3} className="title">
+      Sign in your account
+    </Title>
+  );
 
   return (
-    <section className="h-screen grid place-items-center ">
-      <form className="space-y-4 w-64" onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-control">
-          <input
-            className="p-2 w-full rounded"
-            required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            type="text"
-            placeholder="请输入邮箱地址"
-            {...register("email")}
-          />
+    <section className="grid place-items-center h-screen bg-gray-500">
+      <div className="w-96">
+        <div className="flex justify-center items-center p-2">
+          <img src="./refine.svg" alt="Refine Logo" />
         </div>
-
-        <div className="form-control">
-          <button
-            type="submit"
-            className="bg-black text-white w-full p-2 cursor-pointer hover:bg-black/80 rounded"
-            disabled={formLoading}
+        <Card title={CardTitle} headStyle={{ borderBottom: 0 }}>
+          <Form<ILoginForm>
+            layout="vertical"
+            form={form}
+            onFinish={(values) => {
+              login(values);
+            }}
+            initialValues={{
+              email: "",
+            }}
           >
-            登录
-          </button>
-        </div>
-      </form>
+            <Form.Item
+              name="email"
+              label="Email"
+              rules={[{ required: true, type: "email" }]}
+            >
+              <Input size="large" placeholder="Email" />
+            </Form.Item>
+
+            <Button
+              type="primary"
+              size="large"
+              htmlType="submit"
+              block
+              loading={isLoading}
+            >
+              发送
+            </Button>
+          </Form>
+        </Card>
+      </div>
     </section>
   );
 };
