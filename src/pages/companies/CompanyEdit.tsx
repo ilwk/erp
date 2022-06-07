@@ -1,9 +1,16 @@
-import { Edit, Form, Input, useForm } from "@pankod/refine-antd";
+import {
+  Edit,
+  Form,
+  Input,
+  useForm,
+  Select,
+  useSelect,
+} from "@pankod/refine-antd";
+import { COMPANY_SIZE_OPTIONS } from "../../constants";
 import { definitions } from "../../types/supabase";
 
 const CompanyEdit: React.FC = () => {
   const { formProps, saveButtonProps } = useForm<definitions["companies"]>();
-
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <Form {...formProps} layout="vertical">
@@ -11,7 +18,7 @@ const CompanyEdit: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item label="企业规模" name="size">
-          <Input />
+          <Select options={COMPANY_SIZE_OPTIONS} />
         </Form.Item>
       </Form>
     </Edit>

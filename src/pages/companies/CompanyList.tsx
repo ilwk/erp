@@ -1,28 +1,22 @@
-import {
-  IResourceComponentsProps,
-  useMany,
-  getDefaultFilter,
-} from "@pankod/refine-core";
+import { IResourceComponentsProps } from "@pankod/refine-core";
 
 import {
   List,
   Table,
-  TextField,
   Space,
   EditButton,
   ShowButton,
-  FilterDropdown,
-  Select,
-  Radio,
-  TagField,
+  TextField,
 } from "@pankod/refine-antd";
 
 import { useTable } from "@pankod/refine-antd";
 
 import { IPost } from "../../types";
+import { definitions } from "../../types/supabase";
+import { COMPANY_SIZE_OPTIONS } from "../../constants";
 
 const CompanyList: React.FC<IResourceComponentsProps> = () => {
-  const { tableProps, filters } = useTable<IPost>({
+  const { tableProps, filters } = useTable<definitions["companies"]>({
     syncWithLocation: true,
   });
 
@@ -31,8 +25,17 @@ const CompanyList: React.FC<IResourceComponentsProps> = () => {
       <Table {...tableProps} rowKey="id">
         <Table.Column dataIndex="id" title="ID" />
         <Table.Column dataIndex="name" title="Name" />
-
-        <Table.Column<IPost>
+        <Table.Column<definitions["companies"]>
+          dataIndex="size"
+          title="Size"
+          render={(value, row) => {
+            const label = COMPANY_SIZE_OPTIONS.find(
+              (item) => item.value === value
+            )?.label;
+            return <TextField value={label}></TextField>;
+          }}
+        />
+        <Table.Column<definitions["companies"]>
           title="Actions"
           dataIndex="actions"
           render={(_, record) => (
