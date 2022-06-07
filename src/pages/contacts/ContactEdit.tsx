@@ -10,7 +10,7 @@ import {
 } from "@pankod/refine-antd";
 import { definitions } from "../../types/supabase";
 
-const ContactCreate: React.FC = () => {
+const ContactEdit: React.FC = () => {
   const { formProps, saveButtonProps, onFinish, redirect } = useForm<
     definitions["contacts"]
   >({
@@ -64,4 +64,4 @@ const ContactCreate: React.FC = () => {
   );
 };
 
-export default ContactCreate;
+export default ContactEdit;
