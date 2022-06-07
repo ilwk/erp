@@ -12,6 +12,111 @@ export interface paths {
       };
     };
   };
+  "/companies": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          size?: parameters["rowFilter.companies.size"];
+          sector?: parameters["rowFilter.companies.sector"];
+          logo?: parameters["rowFilter.companies.logo"];
+          website?: parameters["rowFilter.companies.website"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["companies"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** companies */
+          companies?: definitions["companies"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          size?: parameters["rowFilter.companies.size"];
+          sector?: parameters["rowFilter.companies.sector"];
+          logo?: parameters["rowFilter.companies.logo"];
+          website?: parameters["rowFilter.companies.website"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          size?: parameters["rowFilter.companies.size"];
+          sector?: parameters["rowFilter.companies.sector"];
+          logo?: parameters["rowFilter.companies.logo"];
+          website?: parameters["rowFilter.companies.website"];
+        };
+        body: {
+          /** companies */
+          companies?: definitions["companies"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/customers": {
     get: {
       parameters: {
@@ -417,6 +522,30 @@ export interface paths {
 }
 
 export interface definitions {
+  /** @description 公司表 */
+  companies: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    /**
+     * Format: timestamp with time zone
+     * @default now()
+     */
+    created_at?: string;
+    /** Format: text */
+    name?: string;
+    /** Format: smallint */
+    size?: number;
+    /** Format: text */
+    sector?: string;
+    /** Format: text */
+    logo?: string;
+    /** Format: text */
+    website?: string;
+  };
   customers: {
     /**
      * Format: timestamp with time zone
@@ -542,6 +671,22 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
+  /** @description companies */
+  "body.companies": definitions["companies"];
+  /** Format: bigint */
+  "rowFilter.companies.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.companies.created_at": string;
+  /** Format: text */
+  "rowFilter.companies.name": string;
+  /** Format: smallint */
+  "rowFilter.companies.size": string;
+  /** Format: text */
+  "rowFilter.companies.sector": string;
+  /** Format: text */
+  "rowFilter.companies.logo": string;
+  /** Format: text */
+  "rowFilter.companies.website": string;
   /** @description customers */
   "body.customers": definitions["customers"];
   /** Format: timestamp with time zone */
