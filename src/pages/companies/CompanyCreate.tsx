@@ -7,9 +7,12 @@ import {
   Space,
   SaveButton,
 } from "@pankod/refine-antd";
+import { definitions } from "../../types/supabase";
 
 const CompanyCreate: React.FC = () => {
-  const { formProps, saveButtonProps, onFinish, redirect } = useForm<IPost>({
+  const { formProps, saveButtonProps, onFinish, redirect } = useForm<
+    definitions["companies"]
+  >({
     redirect: false,
   });
 
@@ -52,9 +55,3 @@ const CompanyCreate: React.FC = () => {
 };
 
 export default CompanyCreate;
-
-interface IPost {
-  id: string;
-  title: string;
-  status: "published" | "draft" | "rejected";
-}

@@ -11,7 +11,6 @@ import {
 
 import { useTable } from "@pankod/refine-antd";
 
-import { IPost } from "../../types";
 import { definitions } from "../../types/supabase";
 import { COMPANY_SIZE_OPTIONS } from "../../constants";
 
