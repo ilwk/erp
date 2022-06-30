@@ -12,6 +12,204 @@ export interface paths {
       };
     };
   };
+  "/profiles": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          updated_at?: parameters["rowFilter.profiles.updated_at"];
+          username?: parameters["rowFilter.profiles.username"];
+          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
+          website?: parameters["rowFilter.profiles.website"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["profiles"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          updated_at?: parameters["rowFilter.profiles.updated_at"];
+          username?: parameters["rowFilter.profiles.username"];
+          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
+          website?: parameters["rowFilter.profiles.website"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.profiles.id"];
+          updated_at?: parameters["rowFilter.profiles.updated_at"];
+          username?: parameters["rowFilter.profiles.username"];
+          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
+          website?: parameters["rowFilter.profiles.website"];
+        };
+        body: {
+          /** profiles */
+          profiles?: definitions["profiles"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
+  "/orders": {
+    get: {
+      parameters: {
+        query: {
+          inserted_at?: parameters["rowFilter.orders.inserted_at"];
+          updated_at?: parameters["rowFilter.orders.updated_at"];
+          data?: parameters["rowFilter.orders.data"];
+          name?: parameters["rowFilter.orders.name"];
+          id?: parameters["rowFilter.orders.id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["orders"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** orders */
+          orders?: definitions["orders"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          inserted_at?: parameters["rowFilter.orders.inserted_at"];
+          updated_at?: parameters["rowFilter.orders.updated_at"];
+          data?: parameters["rowFilter.orders.data"];
+          name?: parameters["rowFilter.orders.name"];
+          id?: parameters["rowFilter.orders.id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          inserted_at?: parameters["rowFilter.orders.inserted_at"];
+          updated_at?: parameters["rowFilter.orders.updated_at"];
+          data?: parameters["rowFilter.orders.data"];
+          name?: parameters["rowFilter.orders.name"];
+          id?: parameters["rowFilter.orders.id"];
+        };
+        body: {
+          /** orders */
+          orders?: definitions["orders"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/companies": {
     get: {
       parameters: {
@@ -105,105 +303,6 @@ export interface paths {
         body: {
           /** companies */
           companies?: definitions["companies"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/contacts": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.contacts.id"];
-          created_at?: parameters["rowFilter.contacts.created_at"];
-          name?: parameters["rowFilter.contacts.name"];
-          phone?: parameters["rowFilter.contacts.phone"];
-          company_id?: parameters["rowFilter.contacts.company_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["contacts"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** contacts */
-          contacts?: definitions["contacts"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.contacts.id"];
-          created_at?: parameters["rowFilter.contacts.created_at"];
-          name?: parameters["rowFilter.contacts.name"];
-          phone?: parameters["rowFilter.contacts.phone"];
-          company_id?: parameters["rowFilter.contacts.company_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.contacts.id"];
-          created_at?: parameters["rowFilter.contacts.created_at"];
-          name?: parameters["rowFilter.contacts.name"];
-          phone?: parameters["rowFilter.contacts.phone"];
-          company_id?: parameters["rowFilter.contacts.company_id"];
-        };
-        body: {
-          /** contacts */
-          contacts?: definitions["contacts"];
         };
         header: {
           /** Preference */
@@ -420,15 +519,15 @@ export interface paths {
       };
     };
   };
-  "/orders": {
+  "/contacts": {
     get: {
       parameters: {
         query: {
-          inserted_at?: parameters["rowFilter.orders.inserted_at"];
-          updated_at?: parameters["rowFilter.orders.updated_at"];
-          data?: parameters["rowFilter.orders.data"];
-          name?: parameters["rowFilter.orders.name"];
-          id?: parameters["rowFilter.orders.id"];
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -450,7 +549,7 @@ export interface paths {
       responses: {
         /** OK */
         200: {
-          schema: definitions["orders"][];
+          schema: definitions["contacts"][];
         };
         /** Partial Content */
         206: unknown;
@@ -459,8 +558,8 @@ export interface paths {
     post: {
       parameters: {
         body: {
-          /** orders */
-          orders?: definitions["orders"];
+          /** contacts */
+          contacts?: definitions["contacts"];
         };
         query: {
           /** Filtering Columns */
@@ -479,11 +578,11 @@ export interface paths {
     delete: {
       parameters: {
         query: {
-          inserted_at?: parameters["rowFilter.orders.inserted_at"];
-          updated_at?: parameters["rowFilter.orders.updated_at"];
-          data?: parameters["rowFilter.orders.data"];
-          name?: parameters["rowFilter.orders.name"];
-          id?: parameters["rowFilter.orders.id"];
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
         };
         header: {
           /** Preference */
@@ -498,114 +597,15 @@ export interface paths {
     patch: {
       parameters: {
         query: {
-          inserted_at?: parameters["rowFilter.orders.inserted_at"];
-          updated_at?: parameters["rowFilter.orders.updated_at"];
-          data?: parameters["rowFilter.orders.data"];
-          name?: parameters["rowFilter.orders.name"];
-          id?: parameters["rowFilter.orders.id"];
+          id?: parameters["rowFilter.contacts.id"];
+          created_at?: parameters["rowFilter.contacts.created_at"];
+          name?: parameters["rowFilter.contacts.name"];
+          phone?: parameters["rowFilter.contacts.phone"];
+          company_id?: parameters["rowFilter.contacts.company_id"];
         };
         body: {
-          /** orders */
-          orders?: definitions["orders"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/profiles": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          updated_at?: parameters["rowFilter.profiles.updated_at"];
-          username?: parameters["rowFilter.profiles.username"];
-          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
-          website?: parameters["rowFilter.profiles.website"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["profiles"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** profiles */
-          profiles?: definitions["profiles"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          updated_at?: parameters["rowFilter.profiles.updated_at"];
-          username?: parameters["rowFilter.profiles.username"];
-          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
-          website?: parameters["rowFilter.profiles.website"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profiles.id"];
-          updated_at?: parameters["rowFilter.profiles.updated_at"];
-          username?: parameters["rowFilter.profiles.username"];
-          avatar_url?: parameters["rowFilter.profiles.avatar_url"];
-          website?: parameters["rowFilter.profiles.website"];
-        };
-        body: {
-          /** profiles */
-          profiles?: definitions["profiles"];
+          /** contacts */
+          contacts?: definitions["contacts"];
         };
         header: {
           /** Preference */
@@ -621,6 +621,45 @@ export interface paths {
 }
 
 export interface definitions {
+  profiles: {
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: string;
+    /** Format: timestamp with time zone */
+    updated_at?: string;
+    /** Format: text */
+    username?: string;
+    /** Format: text */
+    avatar_url?: string;
+    /** Format: text */
+    website?: string;
+  };
+  orders: {
+    /**
+     * Format: timestamp with time zone
+     * @default timezone('utc'::text, now())
+     */
+    inserted_at: string;
+    /**
+     * Format: timestamp with time zone
+     * @default timezone('utc'::text, now())
+     */
+    updated_at: string;
+    /** Format: jsonb */
+    data?: unknown;
+    /** Format: text */
+    name?: string;
+    /**
+     * Format: uuid
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     * @default extensions.uuid_generate_v4()
+     */
+    id: string;
+  };
   /** @description 公司表 */
   companies: {
     /**
@@ -645,30 +684,6 @@ export interface definitions {
     /** Format: text */
     website?: string;
   };
-  /** @description 联系人管理 */
-  contacts: {
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
-    /** Format: text */
-    name?: string;
-    /** Format: text */
-    phone?: string;
-    /**
-     * Format: bigint
-     * @description Note:
-     * This is a Foreign Key to `companies.id`.<fk table='companies' column='id'/>
-     */
-    company_id?: number;
-  };
   customers: {
     /**
      * Format: timestamp with time zone
@@ -681,7 +696,7 @@ export interface definitions {
      */
     updated_at: string;
     /** Format: jsonb */
-    data?: string;
+    data?: unknown;
     /** Format: text */
     name?: string;
     /**
@@ -709,7 +724,7 @@ export interface definitions {
      */
     updated_at: string;
     /** Format: jsonb */
-    data?: string;
+    data?: unknown;
     /** Format: text */
     name?: string;
     /**
@@ -720,44 +735,29 @@ export interface definitions {
      */
     id: string;
   };
-  orders: {
+  /** @description 联系人管理 */
+  contacts: {
+    /**
+     * Format: bigint
+     * @description Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
     /**
      * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
+     * @default now()
      */
-    inserted_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: jsonb */
-    data?: string;
+    created_at?: string;
     /** Format: text */
     name?: string;
+    /** Format: text */
+    phone?: string;
     /**
-     * Format: uuid
+     * Format: bigint
      * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
+     * This is a Foreign Key to `companies.id`.<fk table='companies' column='id'/>
      */
-    id: string;
-  };
-  profiles: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: string;
-    /** Format: timestamp with time zone */
-    updated_at?: string;
-    /** Format: text */
-    username?: string;
-    /** Format: text */
-    avatar_url?: string;
-    /** Format: text */
-    website?: string;
+    company_id?: number;
   };
 }
 
@@ -794,6 +794,30 @@ export interface parameters {
   offset: string;
   /** @description Limiting and Pagination */
   limit: string;
+  /** @description profiles */
+  "body.profiles": definitions["profiles"];
+  /** Format: uuid */
+  "rowFilter.profiles.id": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.profiles.updated_at": string;
+  /** Format: text */
+  "rowFilter.profiles.username": string;
+  /** Format: text */
+  "rowFilter.profiles.avatar_url": string;
+  /** Format: text */
+  "rowFilter.profiles.website": string;
+  /** @description orders */
+  "body.orders": definitions["orders"];
+  /** Format: timestamp with time zone */
+  "rowFilter.orders.inserted_at": string;
+  /** Format: timestamp with time zone */
+  "rowFilter.orders.updated_at": string;
+  /** Format: jsonb */
+  "rowFilter.orders.data": string;
+  /** Format: text */
+  "rowFilter.orders.name": string;
+  /** Format: uuid */
+  "rowFilter.orders.id": string;
   /** @description companies */
   "body.companies": definitions["companies"];
   /** Format: bigint */
@@ -810,18 +834,6 @@ export interface parameters {
   "rowFilter.companies.logo": string;
   /** Format: text */
   "rowFilter.companies.website": string;
-  /** @description contacts */
-  "body.contacts": definitions["contacts"];
-  /** Format: bigint */
-  "rowFilter.contacts.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.contacts.created_at": string;
-  /** Format: text */
-  "rowFilter.contacts.name": string;
-  /** Format: text */
-  "rowFilter.contacts.phone": string;
-  /** Format: bigint */
-  "rowFilter.contacts.company_id": string;
   /** @description customers */
   "body.customers": definitions["customers"];
   /** Format: timestamp with time zone */
@@ -851,30 +863,18 @@ export interface parameters {
   "rowFilter.materials.name": string;
   /** Format: uuid */
   "rowFilter.materials.id": string;
-  /** @description orders */
-  "body.orders": definitions["orders"];
+  /** @description contacts */
+  "body.contacts": definitions["contacts"];
+  /** Format: bigint */
+  "rowFilter.contacts.id": string;
   /** Format: timestamp with time zone */
-  "rowFilter.orders.inserted_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.orders.updated_at": string;
-  /** Format: jsonb */
-  "rowFilter.orders.data": string;
+  "rowFilter.contacts.created_at": string;
   /** Format: text */
-  "rowFilter.orders.name": string;
-  /** Format: uuid */
-  "rowFilter.orders.id": string;
-  /** @description profiles */
-  "body.profiles": definitions["profiles"];
-  /** Format: uuid */
-  "rowFilter.profiles.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.profiles.updated_at": string;
+  "rowFilter.contacts.name": string;
   /** Format: text */
-  "rowFilter.profiles.username": string;
-  /** Format: text */
-  "rowFilter.profiles.avatar_url": string;
-  /** Format: text */
-  "rowFilter.profiles.website": string;
+  "rowFilter.contacts.phone": string;
+  /** Format: bigint */
+  "rowFilter.contacts.company_id": string;
 }
 
 export interface operations {}
