@@ -1,16 +1,16 @@
 name: Update database types
-on:
-  schedule:
-    - cron: "*/60 * * * *"
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: "*/60 * * * *"
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: lyqht/generate-supabase-db-types-github-action@v0.0.2
-        with:
-          SUPABASE_URL: ${{secrets.SUPABASE_URL }} # e.g. https://interestingproject.supabase.co
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          OUTPUT_PATH: src/types/supabase.ts
+#     steps:
+#       - uses: lyqht/generate-supabase-db-types-github-action@v0.0.2
+#         with:
+#           SUPABASE_URL: ${{secrets.SUPABASE_URL }} # e.g. https://interestingproject.supabase.co
+#           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+#           OUTPUT_PATH: src/types/supabase.ts
