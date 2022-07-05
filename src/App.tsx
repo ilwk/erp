@@ -1,29 +1,47 @@
 import { Refine } from "@pankod/refine-core";
-import { Layout, ErrorComponent } from "@pankod/refine-antd";
-import { dataProvider } from "@pankod/refine-supabase";
 import routerProvider from "@pankod/refine-react-router-v6";
-import { supabaseClient } from "./utility";
-import "@pankod/refine-antd/dist/styles.min.css";
+import {
+  CssBaseline,
+  ErrorComponent,
+  GlobalStyles,
+  Layout,
+  LightTheme,
+  notificationProvider,
+  ReadyPage,
+  RefineSnackbarProvider,
+  ThemeProvider,
+  LoginPage,
+} from "@pankod/refine-mui";
 
-import authProvider from "./authProvider";
-import { Login } from "./pages/login";
+import posts from "./pages/posts";
+import { authProvider } from "./authProvider";
+import { dataProvider } from "@pankod/refine-supabase";
+
 import companies from "./pages/companies";
 import orders from "./pages/orders";
 import contacts from "./pages/contacts";
+import { supabaseClient } from "./utility";
 
 const App: React.FC = () => {
   return (
-    <Refine
-      routerProvider={{ ...routerProvider }}
-      dataProvider={dataProvider(supabaseClient)}
-      authProvider={authProvider}
-      Layout={Layout}
-      LoginPage={Login}
-      catchAll={<ErrorComponent />}
-      resources={[companies, orders, contacts]}
-    />
+    <ThemeProvider theme={LightTheme}>
+      <CssBaseline />
+      <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+      <RefineSnackbarProvider>
+        <Refine
+          routerProvider={routerProvider}
+          dataProvider={dataProvider(supabaseClient)}
+          notificationProvider={notificationProvider}
+          authProvider={authProvider}
+          Layout={Layout}
+          LoginPage={LoginPage}
+          ReadyPage={ReadyPage}
+          catchAll={<ErrorComponent />}
+          resources={[companies, orders, contacts, posts]}
+        />
+      </RefineSnackbarProvider>
+    </ThemeProvider>
   );
 };
-
 
 export default App;
