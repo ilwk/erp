@@ -13,7 +13,7 @@
     "@nhost/react-auth": "^3.4.0",
     "@pankod/refine-antd": "^3.27.0",
     "@pankod/refine-core": "^3.36.0",
-    "@pankod/refine-mui": "3.37.0",
+    "@pankod/refine-mui": "3.39.0",
     "@pankod/refine-nhost": "^3.25.2",
     "@pankod/refine-react-router-v6": "^3.25.2",
     "@pankod/refine-simple-rest": "^3.25.6",
