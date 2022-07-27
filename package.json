@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+
     "@nhost/nhost-js": "1.4.7",
     "@nhost/react": "0.11.2",
     "@nhost/react-auth": "3.5.0",
