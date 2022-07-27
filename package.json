@@ -12,7 +12,7 @@
     "@nhost/nhost-js": "1.4.7",
     "@nhost/react": "0.11.2",
     "@nhost/react-auth": "3.5.0",
-    "@pankod/refine-antd": "3.33.0",
+    "@pankod/refine-antd": "3.33.2",
     "@pankod/refine-core": "3.48.0",
     "@pankod/refine-mui": "3.37.0",
     "@pankod/refine-nhost": "3.29.0",
